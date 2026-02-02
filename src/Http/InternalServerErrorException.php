@@ -7,7 +7,7 @@ namespace Hatchyu\ApiExceptions\Http;
 use Hatchyu\ApiExceptions\Base\ApiBaseException;
 
 /**
- * (500 Internal Server Error): Represents an unexpected error
+ * (500 Internal Server Error): Indicates an unexpected error
  * on the server that prevents it from fulfilling the request.
  */
 class InternalServerErrorException extends ApiBaseException

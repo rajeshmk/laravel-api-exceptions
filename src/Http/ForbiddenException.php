@@ -7,7 +7,7 @@ namespace Hatchyu\ApiExceptions\Http;
 use Hatchyu\ApiExceptions\Base\ApiBaseException;
 
 /**
- * (403 Forbidden): Denotes that the client does not have
+ * (403 Forbidden): Indicates that the client does not have
  * permission to access the requested resource.
  */
 class ForbiddenException extends ApiBaseException
