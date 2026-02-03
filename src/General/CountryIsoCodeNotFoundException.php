@@ -14,7 +14,9 @@ class CountryIsoCodeNotFoundException extends NotFoundException
 {
     public function __construct(string $isoCode)
     {
-        $message = "Country not found for ISO code {$isoCode}.";
+        $message = __('api-exceptions::messages.country_not_found_for_iso', [
+            'iso_code' => $isoCode,
+        ]);
 
         parent::__construct($message);
     }

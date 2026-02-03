@@ -15,8 +15,10 @@ class ModelNotFoundException extends NotFoundException
     public static function forModel(string $modelClass, int|string $id): self
     {
         $model = class_basename($modelClass);
-        $message = "Model not found: {$model} (id: {$id}).";
 
-        return new self($message);
+        return new self(__('api-exceptions::messages.model_not_found', [
+            'model' => $model,
+            'id' => $id,
+        ]));
     }
 }

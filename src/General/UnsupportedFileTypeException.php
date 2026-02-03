@@ -14,6 +14,8 @@ class UnsupportedFileTypeException extends UnsupportedMediaTypeException
 {
     public static function for(string $file): self
     {
-        return new self("Unsupported file type: {$file}.");
+        return new self(__('api-exceptions::messages.unsupported_file_type', [
+            'file' => $file,
+        ]));
     }
 }

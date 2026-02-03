@@ -14,6 +14,8 @@ class PermissionDeniedException extends ForbiddenException
 {
     public static function for(string $permission): self
     {
-        return new self("Permission denied: {$permission}.");
+        return new self(__('api-exceptions::messages.permission_denied', [
+            'permission' => $permission,
+        ]));
     }
 }

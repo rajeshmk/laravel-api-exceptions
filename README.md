@@ -4,10 +4,16 @@ A small library of reusable API exception classes for Laravel apps. Each excepti
 implements `Responsable`, so throwing one returns a JSON error response with an
 appropriate HTTP status code.
 
+**Requirements**
+- PHP `^8.2`
+- Laravel `11.x` or `12.x`
+
 **Install**
 ```bash
 composer require hatchyu/laravel-api-exceptions
 ```
+
+The service provider is auto-discovered by Laravel.
 
 **Usage**
 ```php
@@ -18,18 +24,22 @@ use Hatchyu\ApiExceptions\Http\BadRequestException;
 throw new BadRequestException('Invalid payload.');
 ```
 
-If you omit a message, a default is generated from the class name, for example:
+If you omit a message, a default is generated from the class name, for example
 `BadRequestException` becomes "Bad request.".
 
 **Factory Helpers**
 Some domain exceptions expose convenient factory methods for consistent messages:
 ```php
 use Hatchyu\ApiExceptions\General\FileTooLargeException;
+use Hatchyu\ApiExceptions\General\FileUploadException;
 use Hatchyu\ApiExceptions\General\ModelNotFoundException;
 
 throw FileTooLargeException::for('invoice.pdf');
+throw FileUploadException::for('invoice.pdf');
 throw ModelNotFoundException::forModel(Customer::class, 3);
 ```
+
+Note: `DocumentUploadException` is deprecated in favor of `FileUploadException`.
 
 **Common Exceptions**
 - `BadRequestException` (400)
@@ -51,3 +61,14 @@ throw ModelNotFoundException::forModel(Customer::class, 3);
 **Custom Exceptions**
 Create your own by extending `Hatchyu\ApiExceptions\Base\ApiBaseException` and
 overriding `customHttpCode()`.
+
+**Localization**
+This package ships English translations in `resources/lang/en`. You can override
+them in your app by placing files under
+`resources/lang/{locale}/vendor/api-exceptions`.
+
+**Publishing Translations**
+To publish the translation files into your application for editing:
+```bash
+php artisan vendor:publish --tag=api-exceptions-translations
+```

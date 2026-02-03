@@ -14,6 +14,8 @@ class FileTooLargeException extends PayloadTooLargeException
 {
     public static function for(string $file): self
     {
-        return new self("File too large: {$file}.");
+        return new self(__('api-exceptions::messages.file_too_large', [
+            'file' => $file,
+        ]));
     }
 }

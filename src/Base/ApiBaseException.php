@@ -37,8 +37,16 @@ class ApiBaseException extends Exception implements Responsable
             return $message;
         }
 
-        return Str::of(get_called_class())
-            ->classBasename()
+        $class = class_basename(static::class);
+
+        $translationKey = 'api-exceptions::messages.' . Str::of($class)->snake();
+        $translated = __($translationKey);
+
+        if ($translated !== $translationKey) {
+            return $translated;
+        }
+
+        return Str::of($class)
             ->snake(' ')
             ->replaceLast('exception', '')
             ->trim()

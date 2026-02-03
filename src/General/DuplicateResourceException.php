@@ -14,8 +14,15 @@ class DuplicateResourceException extends ConflictException
 {
     public static function for(string $resource, int|string|null $id = null): self
     {
-        $details = $id === null ? $resource : "{$resource} (id: {$id})";
+        if ($id === null) {
+            return new self(__('api-exceptions::messages.duplicate_resource', [
+                'resource' => $resource,
+            ]));
+        }
 
-        return new self("Duplicate resource: {$details}.");
+        return new self(__('api-exceptions::messages.duplicate_resource_with_id', [
+            'resource' => $resource,
+            'id' => $id,
+        ]));
     }
 }
