@@ -1,6 +1,6 @@
 {
     "name": "hatchyu/laravel-api-exceptions",
-    "description": "General API exceptions for Laravel applications",
+    "description": "API-first reusable JSON exception classes for Laravel with proper HTTP status codes",
     "type": "library",
     "license": "MIT",
     "authors": [
