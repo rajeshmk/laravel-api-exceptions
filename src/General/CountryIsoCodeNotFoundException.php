@@ -12,8 +12,12 @@ use Hatchyu\ApiExceptions\Http\NotFoundException;
  */
 class CountryIsoCodeNotFoundException extends NotFoundException
 {
+    private string $isoCode;
+
     public function __construct(string $isoCode)
     {
+        $this->isoCode = $isoCode;
+
         $message = __('api-exceptions::messages.country_not_found_for_iso', [
             'iso_code' => $isoCode,
         ]);
@@ -29,5 +33,13 @@ class CountryIsoCodeNotFoundException extends NotFoundException
     public static function for(string $isoCode): self
     {
         return self::forIsoCode($isoCode);
+    }
+
+    /**
+     * Get the ISO code that was used in the lookup.
+     */
+    public function getIsoCode(): string
+    {
+        return $this->isoCode;
     }
 }
