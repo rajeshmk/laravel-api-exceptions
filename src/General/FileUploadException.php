@@ -19,6 +19,11 @@ class FileUploadException extends UnprocessableEntityException
 
     public static function for(string $filename): self
     {
+        return self::forFile($filename);
+    }
+
+    public static function forFile(string $filename): self
+    {
         return new self(__('api-exceptions::messages.file_upload_failed', [
             'file' => $filename,
         ]));

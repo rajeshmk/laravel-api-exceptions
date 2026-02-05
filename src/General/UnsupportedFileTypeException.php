@@ -12,10 +12,16 @@ use Hatchyu\ApiExceptions\Http\UnsupportedMediaTypeException;
  */
 class UnsupportedFileTypeException extends UnsupportedMediaTypeException
 {
-    public static function for(string $file): self
+    public static function for(string $file, ?string $type = null): self
+    {
+        return self::forFile($file, $type);
+    }
+
+    public static function forFile(string $file, ?string $type = null): self
     {
         return new self(__('api-exceptions::messages.unsupported_file_type', [
             'file' => $file,
+            'type' => $type ?? 'unknown',
         ]));
     }
 }

@@ -25,4 +25,9 @@ class CountryIsoCodeNotFoundException extends NotFoundException
     {
         return new self($isoCode);
     }
+
+    public static function for(string $isoCode): self
+    {
+        return self::forIsoCode($isoCode);
+    }
 }

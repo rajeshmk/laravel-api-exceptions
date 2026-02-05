@@ -36,6 +36,7 @@ use Hatchyu\ApiExceptions\General\ModelNotFoundException;
 
 throw FileTooLargeException::for('invoice.pdf');
 throw FileUploadException::for('invoice.pdf');
+throw UnsupportedFileTypeException::forFile('invoice.pdf', 'application/pdf');
 throw ModelNotFoundException::forModel(Customer::class, 3);
 ```
 

@@ -51,5 +51,5 @@ return [
     'invalid_token' => 'Invalid token: :token.',
     'model_not_found' => 'Model not found: :model (id: :id).',
     'permission_denied' => 'Permission denied: :permission.',
-    'unsupported_file_type' => 'Unsupported file type: :file.',
+    'unsupported_file_type' => 'Unsupported file type: :file (received: :type).',
 ];

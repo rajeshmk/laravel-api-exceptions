@@ -21,4 +21,9 @@ class ModelNotFoundException extends NotFoundException
             'id' => $id,
         ]));
     }
+
+    public static function for(string $modelClass, int|string $id): self
+    {
+        return self::forModel($modelClass, $id);
+    }
 }
