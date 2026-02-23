@@ -24,7 +24,7 @@ class ApiBaseException extends Exception implements Responsable
     {
         $code = $this->getCode();
 
-        if ($code < 100) {
+        if ($code < 100 || $code > 599) {
             return 500;
         }
 

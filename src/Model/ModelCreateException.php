@@ -16,6 +16,9 @@ class ModelCreateException extends UnprocessableEntityException
 
     private ?string $reason;
 
+    /**
+     * @param Model|class-string<Model> $model
+     */
     public function __construct(Model|string $model, ?string $reason = null)
     {
         $this->model = class_basename($model);
@@ -33,11 +36,17 @@ class ModelCreateException extends UnprocessableEntityException
         parent::__construct($message);
     }
 
+    /**
+     * @param Model|class-string<Model> $model
+     */
     public static function for(Model|string $model, ?string $reason = null): self
     {
         return self::forModel($model, $reason);
     }
 
+    /**
+     * @param Model|class-string<Model> $model
+     */
     public static function forModel(Model|string $model, ?string $reason = null): self
     {
         return new self($model, $reason);

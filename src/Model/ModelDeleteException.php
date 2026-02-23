@@ -23,11 +23,10 @@ class ModelDeleteException extends UnprocessableEntityException
     public function __construct(Model $model, ?string $reason = null)
     {
         $this->model = class_basename($model);
+        $this->reason = $reason;
 
         $this->keyName = $model->getKeyName();
         $this->keyValue = $model->getKey() ?? 'unknown';
-
-        $this->reason = $reason;
 
         $message = $reason === null
             ? __('api-exceptions::messages.model_delete_failed', [

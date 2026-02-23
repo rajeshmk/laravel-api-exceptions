@@ -1,5 +1,9 @@
 # Laravel API Exceptions
 
+![Packagist Version](https://img.shields.io/packagist/v/hatchyu/laravel-api-exceptions)
+![PHP Version](https://img.shields.io/packagist/php-v/hatchyu/laravel-api-exceptions)
+![License](https://img.shields.io/packagist/l/hatchyu/laravel-api-exceptions)
+
 A small library of reusable API exception classes for Laravel apps. Each exception
 implements `Responsable`, so throwing one returns a JSON error response with an
 appropriate HTTP status code.
@@ -32,7 +36,8 @@ Some domain exceptions expose convenient factory methods for consistent messages
 ```php
 use Hatchyu\ApiExceptions\General\FileTooLargeException;
 use Hatchyu\ApiExceptions\General\FileUploadException;
-use Hatchyu\ApiExceptions\General\ModelNotFoundException;
+use Hatchyu\ApiExceptions\General\UnsupportedFileTypeException;
+use Hatchyu\ApiExceptions\Model\ModelNotFoundException;
 use Hatchyu\ApiExceptions\Model\ModelCreateException;
 use Hatchyu\ApiExceptions\Model\ModelUpdateException;
 use Hatchyu\ApiExceptions\Model\ModelDeleteException;
@@ -44,6 +49,10 @@ throw ModelNotFoundException::forModel(Customer::class, 3);
 throw ModelCreateException::forModel(Customer::class, 'Email already exists');
 throw ModelUpdateException::forModel($customer);
 throw ModelDeleteException::forModel($customer, 'Customer has active orders');
+
+// Non-"id" primary keys are resolved automatically from the model instance.
+// Example output: "Failed to update Order (order_id: ORD-1001)."
+throw ModelUpdateException::forModel($order);
 ```
 
 Note: `DocumentUploadException` is deprecated in favor of `FileUploadException`.
