@@ -53,6 +53,12 @@ return [
     'file_upload_failed' => 'File upload failed for :file.',
     'invalid_token' => 'Invalid token: :token.',
     'model_not_found' => 'Model not found: :model (id: :id).',
+    'model_create_failed' => 'Failed to create :model.',
+    'model_create_failed_with_reason' => 'Failed to create :model. Reason: :reason.',
+    'model_update_failed' => 'Failed to update :model (:key: :value).',
+    'model_update_failed_with_reason' => 'Failed to update :model (:key: :value). Reason: :reason.',
+    'model_delete_failed' => 'Failed to delete :model (:key: :value).',
+    'model_delete_failed_with_reason' => 'Failed to delete :model (:key: :value). Reason: :reason.',
     'permission_denied' => 'Permission denied: :permission.',
     'unsupported_file_type' => 'Unsupported file type: :file (received: :type).',
 ];

@@ -33,11 +33,17 @@ Some domain exceptions expose convenient factory methods for consistent messages
 use Hatchyu\ApiExceptions\General\FileTooLargeException;
 use Hatchyu\ApiExceptions\General\FileUploadException;
 use Hatchyu\ApiExceptions\General\ModelNotFoundException;
+use Hatchyu\ApiExceptions\Model\ModelCreateException;
+use Hatchyu\ApiExceptions\Model\ModelUpdateException;
+use Hatchyu\ApiExceptions\Model\ModelDeleteException;
 
 throw FileTooLargeException::for('invoice.pdf');
 throw FileUploadException::for('invoice.pdf');
 throw UnsupportedFileTypeException::forFile('invoice.pdf', 'application/pdf');
 throw ModelNotFoundException::forModel(Customer::class, 3);
+throw ModelCreateException::forModel(Customer::class, 'Email already exists');
+throw ModelUpdateException::forModel($customer);
+throw ModelDeleteException::forModel($customer, 'Customer has active orders');
 ```
 
 Note: `DocumentUploadException` is deprecated in favor of `FileUploadException`.
@@ -57,6 +63,7 @@ Note: `DocumentUploadException` is deprecated in favor of `FileUploadException`.
 - `Hatchyu\ApiExceptions\Http` (top-level HTTP status exceptions)
 - `Hatchyu\ApiExceptions\Auth` (authentication/authorization helpers)
 - `Hatchyu\ApiExceptions\General` (domain-friendly helpers)
+- `Hatchyu\ApiExceptions\Model` (model operation helpers)
 - `Hatchyu\ApiExceptions\Validation` (validation helpers)
 
 **Custom Exceptions**
