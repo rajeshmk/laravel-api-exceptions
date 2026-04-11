@@ -10,7 +10,7 @@ appropriate HTTP status code.
 
 **Requirements**
 - PHP `^8.2`
-- Laravel `11.x` or `12.x`
+- Laravel `11.x`, `12.x` or `13.x`
 
 **Install**
 ```bash
